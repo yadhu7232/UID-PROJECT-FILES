@@ -20,7 +20,9 @@
 /* ═══ RESET ═══ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:var(--surface);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:#080808;overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none;}
+.login-form-side{background:var(--surface);}
+.login-page{background:var(--surface);}
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
 img{max-width:100%;display:block}

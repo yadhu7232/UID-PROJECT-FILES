@@ -1,0 +1,279 @@
+/* ═══════════════════════════════════════════════
+   WHERE NEXT? — CINEMATIC INTRO STYLES
+═══════════════════════════════════════════════ */
+
+/* ── ROOT SCENE ── */
+#cn-intro {
+  position: fixed; inset: 0; z-index: 8000;
+  background: #02040a;
+  overflow: hidden;
+  will-change: transform;
+}
+
+/* ── CABIN ── */
+#ci-cabin {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 50%, #151b2b 0%, #050810 80%);
+}
+.ci-wall {
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 40% 50%, rgba(200,220,255,0.05) 0%, transparent 60%);
+  box-shadow: inset 150px 0 300px rgba(0,0,0,0.9), inset -150px 0 300px rgba(0,0,0,0.9);
+}
+
+/* ── FOREGROUND SEATS ── */
+#ci-seats {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  z-index: 12;
+}
+.ci-seat-right {
+  position: absolute; right: -8%; bottom: -15%;
+  width: 45%; height: 90%;
+  background: linear-gradient(160deg, #111827 0%, #030712 100%);
+  border-top-left-radius: 140px;
+  box-shadow: -30px 0 60px rgba(0,0,0,0.9), inset 5px 5px 20px rgba(255,255,255,0.05);
+  transform: rotate(-3deg);
+}
+.ci-seat-headrest {
+  position: absolute; top: 0; left: -2%; width: 104%; height: 35%;
+  background: linear-gradient(160deg, #1f2937 0%, #0f172a 100%);
+  border-top-left-radius: 140px; border-bottom-left-radius: 20px;
+  box-shadow: -15px 15px 40px rgba(0,0,0,0.7), inset 2px 2px 10px rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+.ci-seat-headrest-cloth {
+  position: absolute; top: 15%; left: 8%; width: 84%; height: 110%;
+  background: #e2e8f0;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5), inset -5px -5px 20px rgba(0,0,0,0.15);
+  transform: rotate(-2deg);
+  opacity: 0.95;
+}
+.ci-seat-left {
+  position: absolute; left: -10%; bottom: -10%;
+  width: 25%; height: 75%;
+  background: #020617;
+  border-top-right-radius: 90px;
+  box-shadow: 20px 0 60px rgba(0,0,0,0.95);
+  transform: rotate(3deg);
+}
+
+/* ── WINDOW ── */
+#ci-window-wrap {
+  position: absolute;
+  top: 48%; left: 40%;
+  transform: translate(-50%, -50%);
+  width: 300px; height: 420px;
+  will-change: width, height, left;
+  z-index: 10;
+}
+#ci-window-outer {
+  width: 100%; height: 100%;
+  border-radius: 150px;
+  padding: 35px;
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  box-shadow: inset 8px 8px 20px rgba(0,0,0,0.6), inset -8px -8px 20px rgba(255,255,255,0.05), 15px 15px 40px rgba(0,0,0,0.9);
+  will-change: width, height, padding, border-radius;
+}
+#ci-window-frame {
+  width: 100%; height: 100%;
+  border-radius: 115px;
+  overflow: hidden;
+  position: relative;
+  background: #000;
+  box-shadow: 0 0 0 6px #020617, inset 0 0 25px rgba(0,0,0,0.95);
+  will-change: border-radius, width, height;
+}
+
+/* shade */
+.ci-win-shade {
+  position: absolute; top: -85%; left: 0; width: 100%; height: 100%;
+  background: #cbd5e1;
+  border-bottom: 12px solid #94a3b8;
+  border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;
+  z-index: 7;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+/* inner bevel */
+.ci-win-inner-bevel {
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 15px rgba(255,255,255,0.15), inset 0 0 40px rgba(0,0,0,0.85);
+  z-index: 6; pointer-events: none;
+}
+
+/* window inner glow rim */
+.ci-win-glow {
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 40px rgba(100,180,255,.15),
+              inset 0 0 80px rgba(50,120,255,.05);
+  z-index: 5; pointer-events: none;
+  animation: winPulse 4s ease-in-out infinite;
+}
+@keyframes winPulse {
+  0%,100% { box-shadow: inset 0 0 40px rgba(100,180,255,.15), inset 0 0 80px rgba(50,120,255,.05); }
+  50%      { box-shadow: inset 0 0 60px rgba(100,180,255,.25), inset 0 0 120px rgba(50,120,255,.1); }
+}
+
+/* window reflection streaks */
+.ci-win-refl {
+  position: absolute; z-index: 6; pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.15), transparent);
+  border-radius: 50%;
+  transform: rotate(-25deg);
+}
+.ci-wr1 { top: 5%; left: 10%; width: 45%; height: 75%; }
+.ci-wr2 { top: 15%; left: 65%; width: 18%; height: 55%; background: linear-gradient(180deg, rgba(255,255,255,0.08), transparent); }
+
+/* video inside window */
+#ci-win-content {
+  position: absolute; inset: 0;
+  overflow: hidden;
+}
+#ci-win-content video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  will-change: transform, opacity;
+  transform: scale(1.05);
+}
+
+/* cinematic grade */
+.ci-grade {
+  position: absolute; inset: 0; z-index: 4; pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(2,8,30,.4) 0%, transparent 40%, rgba(2,8,20,.6) 100%),
+    radial-gradient(ellipse at center, transparent 40%, rgba(2,6,20,.5) 100%);
+  mix-blend-mode: multiply;
+}
+
+/* atmospheric fog */
+.ci-fog {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  background: radial-gradient(ellipse 60% 40% at 50% 80%,
+    rgba(150,200,255,.15) 0%, transparent 70%);
+  animation: fogDrift 8s ease-in-out infinite alternate;
+}
+@keyframes fogDrift {
+  from { transform: translateY(0) scaleX(1); }
+  to   { transform: translateY(-10px) scaleX(1.05); }
+}
+
+/* external window glow on cabin walls */
+#ci-window-wrap::before {
+  content: '';
+  position: absolute; inset: -200px;
+  background: radial-gradient(ellipse at center,
+    rgba(120,200,255,.06) 0%,
+    transparent 65%);
+  z-index: -1; pointer-events: none;
+  animation: extGlow 4s ease-in-out infinite alternate;
+}
+@keyframes extGlow {
+  from { opacity: .7; transform: scale(1); }
+  to   { opacity: 1;  transform: scale(1.05); }
+}
+
+/* ── TEXT ── */
+#ci-text {
+  position: absolute;
+  bottom: 15%; left: 0; right: 0;
+  z-index: 15; text-align: center;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+.ci-tagline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .72rem; font-weight: 500;
+  letter-spacing: .35em; text-transform: uppercase;
+  color: rgba(120,170,255,.6);
+  margin-bottom: 16px;
+  will-change: opacity, letter-spacing;
+}
+.ci-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 700; line-height: 1;
+  color: #ffffff;
+  letter-spacing: .3em;
+  will-change: opacity, letter-spacing;
+  text-shadow: 0 0 80px rgba(80,140,255,.4),
+               0 0 160px rgba(40,100,255,.2);
+}
+.ci-sub {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .9rem; font-weight: 300;
+  color: rgba(255,255,255,.55);
+  letter-spacing: .12em;
+  margin-top: 14px;
+}
+
+/* ── PROGRESS ── */
+#ci-progress-wrap {
+  position: absolute; bottom: 48px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 16; text-align: center;
+  will-change: opacity;
+}
+#ci-progress-fill {
+  width: 0; height: 1px;
+  background: linear-gradient(90deg,
+    transparent, rgba(80,140,255,.8), rgba(120,180,255,1), rgba(80,140,255,.8), transparent);
+  border-radius: 1px;
+  box-shadow: 0 0 8px rgba(80,140,255,.6);
+  margin-bottom: 12px;
+  transition: none;
+}
+#ci-progress-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .6rem; font-weight: 500;
+  letter-spacing: .3em; text-transform: uppercase;
+  color: rgba(255,255,255,.2);
+}
+
+/* ── FLASH ── */
+#ci-flash {
+  position: absolute; inset: 0; z-index: 30;
+  background: #000;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+/* ── HOME (hidden until intro done) ── */
+#cn-home {
+  display: none;
+  position: relative;
+  z-index: 100;
+}
+
+/* ── HERO VIDEO HERO ── */
+#cn-home .ci-video-hero {
+  position: relative; width: 100%; height: 100vh;
+  overflow: hidden; background: #02040a;
+}
+#cn-home .ci-video-hero video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+.ci-hero-grade {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(2,4,10,.55) 0%, rgba(2,4,10,.1) 40%, rgba(2,4,10,.75) 100%),
+    linear-gradient(to right, rgba(2,4,10,.7) 0%, transparent 50%);
+}
+.ci-hero-grain-layer {
+  position: absolute; inset: 0; z-index: 3;
+  opacity: .03; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px;
+}
+.ci-hero-vignette {
+  position: absolute; inset: 0; z-index: 4; pointer-events: none;
+  background: radial-gradient(ellipse at center,
+    transparent 30%, rgba(2,4,10,.65) 100%);
+}
